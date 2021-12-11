@@ -6,10 +6,9 @@ using Core.Entities;
 
 namespace Core.Interfaces
 {
-    public interface IProductRepository
+    public interface IGenericRepository<T> where T : BaseEntity
     {
-        Task<Product> GetProductByIdAsync(int id);
-        Task<IReadOnlyList<Product>> GetProductsAsync();
-
+        Task<T> GetByIdAsync(int id);
+        Task<IReadOnlyList<T>> ListAllAsync();
     }
 }
