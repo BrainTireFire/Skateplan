@@ -10,3 +10,18 @@
     top: -12px;
     right: 32px;
 }
+
+a {
+    text-decoration: none;
+    color: #343a40;
+    
+    &.active {
+        color: rgb(6, 126, 106);
+    }
+}
+
+.logo {
+    cursor: pointer;
+    max-height: 75px; 
+    width: 150px;
+}
