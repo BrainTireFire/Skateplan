@@ -1,0 +1,128 @@
+.container {
+    margin: 0 auto;
+    padding: 0;
+    box-sizing: border-box;
+}
+  
+.not-found{
+    font-family: cursive;
+    margin: 0 auto;
+    overflow: hidden;
+  }
+  
+  svg {
+      font: 10.5em 'Monoton';
+      width: 100%;
+      height: 50vh;
+  }
+
+  .content{
+    position: relative;
+    text-align: center;
+  }
+  
+  h1{
+    text-align: center;
+    font: 2em 'Roboto', sans-serif;
+    font-weight: bold;
+    color: #2f8f7f;
+    opacity: .6;
+  }
+  
+  a{
+     display: inline-block;
+     text-transform: uppercase;
+     font-size: 1em 'Roboto';
+     font-weight: 300;
+     border: 1px solid #2f8f7f;
+     border-radius: 4px;
+     color: #2f8f7f;
+     margin: 10px 0;
+     padding: 2px 2px;
+     text-decoration: none;
+     opacity: .6;
+  }
+  
+  .text {
+      fill: none;
+      stroke: white;
+      stroke-dasharray: 8% 29%;
+      stroke-width: 5px;
+      stroke-dashoffset: 1%;
+      animation: stroke-offset 5.5s infinite linear;
+  }
+  
+  .text:nth-child(1){
+      stroke: #1c234d;
+      animation-delay: -1;
+  }
+  
+  .text:nth-child(2){
+      stroke: #315b2c;
+      animation-delay: -2s;
+  }
+  
+  .text:nth-child(3){
+      stroke: #2f8f7f;
+      animation-delay: -3s;
+  }
+  
+  .text:nth-child(4){
+      stroke: #2f8f7f;
+      animation-delay: -4s;
+  }
+  
+  .text:nth-child(5){
+      stroke: #da2717;
+      animation-delay: -5s;
+  }
+  
+  @keyframes stroke-offset{
+      100% {
+      stroke-dashoffset: -35%;
+    }
+  }
+
+  .background {
+    width: 100vw;
+    height: 100vh;
+  }
+  
+  $particleSize: 20vmin;
+  $animationDuration: 6s;
+  $amount: 20;
+  .background span {
+    width: $particleSize;
+    height: $particleSize;
+    border-radius: $particleSize;
+    backface-visibility: hidden;
+    position: absolute;
+    animation-name: move;
+    animation-duration: $animationDuration;
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+    $colors: (
+      #583C87,
+      #E45A84,
+      #FFACAC
+    );
+    @for $i from 1 through $amount {
+      &:nth-child(#{$i}) {
+        color: nth($colors, random(length($colors)));
+        top: random(100) * 1%;
+        left: random(100) * 1%;
+        animation-duration: (random($animationDuration * 10) / 10) * 1s + 10s;
+        animation-delay: random(($animationDuration + 10s) * 10) / 10 * -1s;
+        transform-origin: (random(50) - 25) * 1vw (random(50) - 25) * 1vh;
+        $blurRadius: (random() + 0.5) * $particleSize * 0.5;
+        $x: if(random() > 0.5, -1, 1);
+        box-shadow: ($particleSize * 2 * $x) 0 $blurRadius currentColor;
+      }
+    }
+  }
+  
+  @keyframes move {
+    100% {
+      transform: translate3d(0, 0, 1px) rotate(360deg);
+    }
+  }
