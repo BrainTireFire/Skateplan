@@ -1,6 +1,6 @@
 # Skateplan
 
-This is an porject about online skateshop.
+This is an porject about online skateshop. C# and angularts
 
 ## Introduction
 
